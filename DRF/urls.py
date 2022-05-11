@@ -23,14 +23,16 @@ class CustomConfirmEmailView(ConfirmEmailView):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
+    path("todos/", include("todo.urls")),
+    path("csvuploader/", include("csvuploader.urls")),
 
     #restauthtoken urls
     #path('auth/', include('rest_authtoken.urls')),
     #path('api/', include('accounts.urls')),
 
     #rest-auth urls
-    path('rest-auth/', include('rest_auth.urls')),
-    path('rest-auth/registration/', include('rest_auth.registration.urls')),
+    #path('rest-auth/', include('rest_auth.urls')),
+    #path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('rest-auth/registration/account-confirm-email/(?P<key>.+)/', CustomConfirmEmailView.as_view(), name='account_confirm_email'),
-
+#
 ]
